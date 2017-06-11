@@ -1,0 +1,19 @@
+data segment
+    org 100h
+    x dd 13.09
+    y dd 2.5
+    sum dd ?
+data ends
+code segment
+    assume cs:code,ds:data
+    start:mov ax,data
+    mov ds,ax
+    finit
+    fld x
+    fld y
+    fadd ST(0),ST(1)
+    fst sum
+    mov ah,4ch
+    int 21h
+    code ends
+end start
